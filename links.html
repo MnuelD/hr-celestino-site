@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conecte-se - HR Celestino</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --secondary: #1A1A1A;
+      --accent: #FF8C42;
+      --light: #F8FAFC;
+      --dark: #2D3748;
+      --text: #4A5568;
+      --light-text: #718096;
+      --gold: #D4AF37;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body { 
+      font-family: 'Open Sans', sans-serif; 
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+      background-color: #ffffff;
+    }
+    
+    h1, h2, h3, h4, h5, h6 { 
+      font-family: 'Montserrat', sans-serif; 
+      font-weight: 700; 
+      color: var(--secondary);
+      line-height: 1.3;
+    }
+    
+    a {
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    /* Navbar */
+    .navbar { 
+      background: rgba(255, 255, 255, 0.98); 
+      transition: all 0.4s ease; 
+      padding: 15px 0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .navbar-brand { 
+      font-weight: 700; 
+      font-size: 1.8rem; 
+      color: var(--secondary); 
+      display: flex;
+      align-items: center;
+    }
+    
+    .navbar-brand span { 
+      color: var(--primary); 
+      position: relative;
+    }
+    
+    .navbar-brand span:after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      bottom: 2px;
+      right: -10px;
+    }
+    
+    .nav-link { 
+      font-weight: 500; 
+      color: var(--secondary);
+      position: relative;
+      margin: 0 8px;
+      padding: 8px 12px !important;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    
+    .nav-link:before {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 5px;
+      left: 12px;
+      background-color: var(--primary);
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+    
+    .nav-link:hover:before,
+    .nav-link.active:before {
+      visibility: visible;
+      width: calc(100% - 24px);
+    }
+    
+    .nav-link:hover, 
+    .nav-link.active { 
+      color: var(--primary); 
+    }
+
+    /* Hero Section */
+    .links-hero {
+      background: linear-gradient(135deg, var(--secondary) 0%, #2A2A2A 100%);
+      color: white;
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .links-hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+    
+    .links-hero h1 {
+      color: white;
+      font-size: 3.2rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .links-hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+      position: relative;
+    }
+
+    /* Links Section */
+    .links-section {
+      padding: 80px 0;
+      background: var(--light);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--light-text);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Social Links Grid */
+    .social-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-bottom: 60px;
+    }
+    
+    .social-link-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border-top: 4px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-link-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .social-link-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link-card:hover:before {
+      opacity: 1;
+    }
+    
+    .social-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      font-size: 2.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-link-card:hover .social-icon {
+      transform: scale(1.1);
+    }
+    
+    .social-icon.linkedin {
+      background: rgba(10, 102, 194, 0.1);
+      color: #0A66C2;
+    }
+    
+    .social-icon.facebook {
+      background: rgba(24, 119, 242, 0.1);
+      color: #1877F2;
+    }
+    
+    .social-icon.instagram {
+      background: linear-gradient(45deg, rgba(225, 48, 108, 0.1), rgba(245, 96, 64, 0.1), rgba(247, 219, 65, 0.1));
+      color: #E1306C;
+    }
+    
+    .social-icon.twitter {
+      background: rgba(29, 161, 242, 0.1);
+      color: #1DA1F2;
+    }
+    
+    .social-icon.youtube {
+      background: rgba(255, 0, 0, 0.1);
+      color: #FF0000;
+    }
+    
+    .social-icon.website {
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--primary);
+    }
+    
+    .social-icon.email {
+      background: rgba(102, 102, 102, 0.1);
+      color: #666666;
+    }
+    
+    .social-link-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+    
+    .social-link-card p {
+      color: var(--light-text);
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+    
+    .btn-social {
+      padding: 12px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
+    }
+    
+    .btn-social.primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-social.primary:hover {
+      background: #E55A00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+    }
+    
+    .btn-social.outline {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    
+    .btn-social.outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* QR Code Section */
+    .qrcode-section {
+      padding: 80px 0;
+      background: white;
+    }
+    
+    .qrcode-container {
+      background: white;
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .qrcode-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      background: rgba(255, 107, 0, 0.1);
+      font-size: 2.5rem;
+      color: var(--primary);
+    }
+    
+    .qrcode-placeholder {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-text);
+      font-size: 0.9rem;
+      border: 2px dashed #E2E8F0;
+    }
+    
+    .qrcode-container h3 {
+      margin-bottom: 15px;
+      font-size: 1.6rem;
+    }
+    
+    .qrcode-container p {
+      color: var(--light-text);
+      margin-bottom: 25px;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      background: var(--light);
+      padding: 60px 0;
+      text-align: center;
+    }
+    
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 25px 20px;
+      padding: 15px 25px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-right: 15px;
+    }
+    
+    .contact-text h4 {
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    
+    .contact-text p {
+      color: var(--light-text);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--secondary);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 60px 0 25px;
+    }
+    
+    .footer-title {
+      color: white;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    .footer-title:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+      padding-left: 5px;
+    }
+    
+    .footer-social {
+      display: flex;
+      margin-top: 20px;
+    }
+    
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .links-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .links-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .social-links-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .qrcode-container {
+        padding: 30px 20px;
+      }
+      
+      .contact-item {
+        display: block;
+        margin: 0 0 15px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+
+
+  <!-- Hero Section -->
+  <section class="links-hero">
+    <div class="container">
+      <h1>Conecte-se Connosco</h1>
+      <p>Siga-nos nas redes sociais e mantenha-se atualizado com as últimas novidades em recursos humanos</p>
+    </div>
+  </section>
+
+  <!-- Social Links Section -->
+  <section class="links-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Nossas Redes Sociais</h2>
+        <p class="section-subtitle">Conecte-se connosco através das nossas plataformas digitais</p>
+      </div>
+      
+      <div class="social-links-grid">
+        <!-- LinkedIn -->
+        <div class="social-link-card">
+          <div class="social-icon linkedin">
+            <i class="fab fa-linkedin-in"></i>
+          </div>
+          <h3>LinkedIn</h3>
+          <p>Siga-nos no LinkedIn para conteúdos profissionais, oportunidades de carreira e networking empresarial.</p>
+          <a href="#" class="btn-social primary">Seguir no LinkedIn</a>
+        </div>
+        
+        <!-- Facebook -->
+        <div class="social-link-card">
+          <div class="social-icon facebook">
+            <i class="fab fa-facebook-f"></i>
+          </div>
+          <h3>Facebook</h3>
+          <p>Acompanhe as novidades, eventos e conteúdos exclusivos sobre gestão de pessoas e desenvolvimento organizacional.</p>
+          <a href="#" class="btn-social primary">Seguir no Facebook</a>
+        </div>
+        
+        <!-- Instagram -->
+        <div class="social-link-card">
+          <div class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </div>
+          <h3>Instagram</h3>
+          <p>Descubra o dia a dia da HR Celestino, dicas rápidas de RH e stories exclusivos da nossa equipa.</p>
+          <a href="#" class="btn-social outline">Seguir no Instagram</a>
+        </div>
+        
+        <!-- Website -->
+        <div class="social-link-card">
+          <div class="social-icon website">
+            <i class="fas fa-globe"></i>
+          </div>
+          <h3>Website Oficial</h3>
+          <p>Explore nosso site completo com todos os serviços, formações e recursos em gestão de pessoas.</p>
+          <a href="index.html" class="btn-social primary">Visitar Website</a>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Contact Info -->
+  <section class="contact-info">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Informações de Contacto</h2>
+        <p class="section-subtitle">Entre em contacto connosco através dos seguintes canais</p>
+      </div>
+      
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Telefone</h4>
+            <p>+351 123 456 789</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Email</h4>
+            <p>info@hrcelestino.pt</p>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="contact-text">
+            <h4>Localização</h4>
+            <p>Av. da Liberdade 123, Lisboa</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

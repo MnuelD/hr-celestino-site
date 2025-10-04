@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos & Formações - HR Celestino</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --secondary: #1A1A1A;
+      --accent: #FF8C42;
+      --light: #F8FAFC;
+      --dark: #2D3748;
+      --text: #4A5568;
+      --light-text: #718096;
+      --gold: #D4AF37;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background-color: #f9f9f9;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    .courses-hero {
+      background: linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.8)), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 100px 0 80px;
+      text-align: center;
+    }
+    
+    .courses-hero h1 {
+      color: white;
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+    }
+    
+    .courses-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+    }
+    
+    .courses-section {
+      padding: 80px 0;
+    }
+    
+    .course-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .course-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+    
+    .course-image {
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .course-category {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--primary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    .course-content {
+      padding: 25px;
+    }
+    
+    .course-icon {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.1);
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .course-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    
+    .course-meta {
+      display: flex;
+      margin-bottom: 15px;
+    }
+    
+    .course-meta span {
+      margin-right: 15px;
+      color: var(--light-text);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+    }
+    
+    .course-meta i {
+      color: var(--primary);
+      margin-right: 5px;
+    }
+    
+    .course-content p {
+      color: var(--light-text);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .btn-primary:hover {
+      background: #E55A00;
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      padding: 8px 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--light-text);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .categories-section {
+      background: var(--light);
+      padding: 80px 0;
+    }
+    
+    .category-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: rgba(255, 107, 0, 0.1);
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    
+    .category-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .category-card p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--secondary) 0%, #2A2A2A 100%);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+    
+    .cta-text {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top" style="background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 12px 0;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="font-weight: 700; font-size: 1.6rem; color: #1A1A1A;">HR <span style="color: #FF6B00;">Celestino</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cursos.html">Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="candidato.html">Candidato</a></li>
+          <li class="nav-item"><a class="nav-link" href="empregador.html">Empregador</a></li>
+          <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section Cursos -->
+  <section class="courses-hero">
+    <div class="container">
+      <h1>Cursos & Formações Especializadas</h1>
+      <p>Desenvolva competências e potencialize sua carreira com nossos programas de formação desenvolvidos por especialistas em recursos humanos.</p>
+      <a href="#cursos" class="btn btn-primary btn-lg">Explorar Cursos</a>
+    </div>
+  </section>
+
+  <!-- Categorias de Cursos -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Áreas de Formação</h2>
+        <p class="section-subtitle">Descubra nossos programas organizados por áreas de especialização</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Liderança & Gestão</h3>
+            <p>Programas para desenvolver competências de liderança, gestão de equipas e tomada de decisão estratégica.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Comunicação & Soft Skills</h3>
+            <p>Formações para melhorar habilidades de comunicação, negociação, trabalho em equipa e inteligência emocional.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Recrutamento & Seleção</h3>
+            <p>Cursos especializados em técnicas de recrutamento, assessment, entrevistas e employer branding.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Gestão de Performance</h3>
+            <p>Programas sobre avaliação de desempenho, gestão por objetivos e desenvolvimento de carreira.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Legislação Laboral</h3>
+            <p>Formações sobre direito do trabalho, relações laborais e conformidade legal em recursos humanos.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Tecnologia em RH</h3>
+            <p>Cursos sobre sistemas de gestão de RH, People Analytics e transformação digital em recursos humanos.</p>
+            <a href="#" class="btn btn-outline">Ver Cursos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cursos em Destaque -->
+  <section class="courses-section" id="cursos">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Cursos em Destaque</h2>
+        <p class="section-subtitle">Conheça nossos programas de formação mais procurados</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Liderança</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>Liderança de Alta Performance</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 40 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Desenvolva competências de liderança estratégica, gestão de equipas e tomada de decisão em contextos complexos.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Recrutamento</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <h3>Recrutamento 4.0</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 32 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Aprenda as mais recentes técnicas de recrutamento digital, employer branding e assessment comportamental.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Comunicação</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-comments"></i>
+              </div>
+              <h3>Comunicação Eficaz</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 24 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Melhore suas habilidades de comunicação interpessoal, apresentação e influência em contextos profissionais.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Gestão</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Gestão Estratégica de Pessoas</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 48 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Domine as estratégias de gestão de pessoas que alinham talentos com objetivos organizacionais.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Tecnologia</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h3>People Analytics</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 36 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Aprenda a utilizar dados e analytics para tomar decisões estratégicas em gestão de pessoas.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="course-card">
+            <div class="course-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80');">
+              <span class="course-category">Legislação</span>
+            </div>
+            <div class="course-content">
+              <div class="course-icon">
+                <i class="fas fa-balance-scale"></i>
+              </div>
+              <h3>Direito do Trabalho</h3>
+              <div class="course-meta">
+                <span><i class="fas fa-clock"></i> 30 horas</span>
+                <span><i class="fas fa-user-graduate"></i> Certificado</span>
+              </div>
+              <p>Compreenda a legislação laboral portuguesa e suas implicações na gestão diária de recursos humanos.</p>
+              <a href="#" class="btn btn-primary">Saber Mais</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5 text-center">
+        <div class="col-12">
+          <a href="#" class="btn btn-primary btn-lg">Ver Todos os Cursos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Pronto para Desenvolver suas Competências?</h2>
+      <p class="cta-text">Inscreva-se em nossos cursos e dê um impulso na sua carreira com formações ministradas por especialistas do mercado.</p>
+      <a href="#" class="btn btn-primary btn-lg">Fale com um Consultor</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #1A1A1A; color: rgba(255,255,255,0.7); padding: 60px 0 25px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">HR Celestino</h3>
+          <p style="font-size: 0.9rem;">Soluções completas em recursos humanos para transformar pessoas em resultados.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Links Rápidos</h3>
+          <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 8px;"><a href="servicos.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Serviços</a></li>
+            <li style="margin-bottom: 8px;"><a href="cursos.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Cursos</a></li>
+            <li style="margin-bottom: 8px;"><a href="blog.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Contato</h3>
+          <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-2"></i> Av. da Liberdade 123, Lisboa</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-phone-alt me-2"></i> +351 123 456 789</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-envelope me-2"></i> info@hrcelestino.pt</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Newsletter</h3>
+          <div class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Seu email">
+            <button class="btn btn-primary">Inscrever</button>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="font-size: 0.8rem;">&copy; 2023 HR Celestino. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

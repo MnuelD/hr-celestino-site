@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - HR Celestino</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --secondary: #1A1A1A;
+      --accent: #FF8C42;
+      --light: #F8FAFC;
+      --dark: #2D3748;
+      --text: #4A5568;
+      --light-text: #718096;
+      --gold: #D4AF37;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.7;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: white;
+      line-height: 1.3;
+    }
+    
+    .auth-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      max-width: 450px;
+      width: 90%;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .auth-container:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--gold));
+    }
+    
+    .auth-header {
+      padding: 40px 40px 20px;
+      text-align: center;
+    }
+    
+    .logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--secondary);
+    }
+    
+    .logo span {
+      color: var(--primary);
+      position: relative;
+    }
+    
+    .logo span:after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      bottom: 5px;
+      right: -12px;
+    }
+    
+    .auth-header p {
+      color: var(--light-text);
+      margin-bottom: 0;
+    }
+    
+    .auth-tabs {
+      display: flex;
+      border-bottom: 1px solid #E2E8F0;
+    }
+    
+    .auth-tab {
+      flex: 1;
+      padding: 15px;
+      text-align: center;
+      background: none;
+      border: none;
+      font-weight: 600;
+      color: var(--light-text);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .auth-tab.active {
+      color: var(--primary);
+      border-bottom: 3px solid var(--primary);
+    }
+    
+    .auth-content {
+      padding: 30px 40px 40px;
+    }
+    
+    .auth-form {
+      display: none;
+    }
+    
+    .auth-form.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--secondary);
+      font-size: 0.95rem;
+    }
+    
+    .form-control {
+      padding: 14px 16px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+    }
+    
+    .password-toggle {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--light-text);
+      cursor: pointer;
+    }
+    
+    .password-container {
+      position: relative;
+    }
+    
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .form-check {
+      margin-bottom: 0;
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    
+    .forgot-password {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .forgot-password:hover {
+      color: #E55A00;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      padding: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      color: white;
+      width: 100%;
+      font-size: 1.05rem;
+    }
+    
+    .btn-primary:hover {
+      background: #E55A00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+    }
+    
+    .auth-divider {
+      text-align: center;
+      margin: 25px 0;
+      position: relative;
+    }
+    
+    .auth-divider:before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: #E2E8F0;
+    }
+    
+    .auth-divider span {
+      background: white;
+      padding: 0 15px;
+      color: var(--light-text);
+      font-size: 0.9rem;
+    }
+    
+    .social-auth {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    
+    .social-btn {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #E2E8F0;
+      border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--text);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .social-btn:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    
+    .social-btn.linkedin {
+      color: #0077B5;
+    }
+    
+    .social-btn.google {
+      color: #DB4437;
+    }
+    
+    .auth-footer {
+      text-align: center;
+      margin-top: 25px;
+    }
+    
+    .auth-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .auth-footer a:hover {
+      color: #E55A00;
+    }
+    
+    /* Responsive */
+    @media (max-width: 576px) {
+      .auth-container {
+        width: 95%;
+      }
+      
+      .auth-header, .auth-content {
+        padding: 30px 20px;
+      }
+      
+      .social-auth {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-header">
+      <div class="logo">HR <span>Celestino</span></div>
+      <p>Aceda à sua conta ou crie uma nova</p>
+    </div>
+    
+    <div class="auth-tabs">
+      <button class="auth-tab active" onclick="showAuthForm('login')">Entrar</button>
+      <button class="auth-tab" onclick="showAuthForm('register')">Criar Conta</button>
+    </div>
+    
+    <div class="auth-content">
+      <!-- Login Form -->
+      <form class="auth-form active" id="login-form">
+        <div class="form-group">
+          <label for="loginEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="loginEmail" placeholder="seu@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="loginPassword" class="form-label">Palavra-passe</label>
+          <div class="password-container">
+            <input type="password" class="form-control" id="loginPassword" placeholder="Sua palavra-passe" required>
+            <button type="button" class="password-toggle" onclick="togglePassword('loginPassword')">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-options">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rememberMe">
+            <label class="form-check-label" for="rememberMe">Lembrar-me</label>
+          </div>
+          <a href="#" class="forgot-password">Esqueceu a palavra-passe?</a>
+        </div>
+        
+        <button type="submit" class="btn-primary">Entrar na Conta</button>
+        
+        <div class="auth-divider">
+          <span>Ou entre com</span>
+        </div>
+        
+        <div class="social-auth">
+          <a href="#" class="social-btn linkedin">
+            <i class="fab fa-linkedin-in"></i>
+            LinkedIn
+          </a>
+          <a href="#" class="social-btn google">
+            <i class="fab fa-google"></i>
+            Google
+          </a>
+        </div>
+      </form>
+      
+      <!-- Register Form -->
+      <form class="auth-form" id="register-form">
+        <div class="form-group">
+          <label for="registerName" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control" id="registerName" placeholder="Seu nome completo" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerEmail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="registerEmail" placeholder="seu@email.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerPassword" class="form-label">Palavra-passe</label>
+          <div class="password-container">
+            <input type="password" class="form-control" id="registerPassword" placeholder="Crie uma palavra-passe" required>
+            <button type="button" class="password-toggle" onclick="togglePassword('registerPassword')">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="registerConfirmPassword" class="form-label">Confirmar Palavra-passe</label>
+          <div class="password-container">
+            <input type="password" class="form-control" id="registerConfirmPassword" placeholder="Confirme a palavra-passe" required>
+            <button type="button" class="password-toggle" onclick="togglePassword('registerConfirmPassword')">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="userType" class="form-label">Tipo de Conta</label>
+          <select class="form-control" id="userType" required>
+            <option value="">Selecione o tipo de conta</option>
+            <option value="candidate">Candidato</option>
+            <option value="employer">Empregador</option>
+            <option value="consultant">Consultor</option>
+          </select>
+        </div>
+        
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+          <label class="form-check-label" for="acceptTerms">
+            Concordo com os <a href="#" style="color: var(--primary);">Termos de Serviço</a> e <a href="#" style="color: var(--primary);">Política de Privacidade</a>
+          </label>
+        </div>
+        
+        <button type="submit" class="btn-primary">Criar Conta</button>
+        
+        <div class="auth-divider">
+          <span>Ou registe-se com</span>
+        </div>
+        
+        <div class="social-auth">
+          <a href="#" class="social-btn linkedin">
+            <i class="fab fa-linkedin-in"></i>
+            LinkedIn
+          </a>
+          <a href="#" class="social-btn google">
+            <i class="fab fa-google"></i>
+            Google
+          </a>
+        </div>
+      </form>
+      
+      <div class="auth-footer">
+        <a href="index.html">← Voltar ao site principal</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Show/hide auth forms
+    function showAuthForm(formType) {
+      // Update tabs
+      document.querySelectorAll('.auth-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Update forms
+      document.querySelectorAll('.auth-form').forEach(form => {
+        form.classList.remove('active');
+      });
+      document.getElementById(`${formType}-form`).classList.add('active');
+    }
+    
+    // Toggle password visibility
+    function togglePassword(inputId) {
+      const input = document.getElementById(inputId);
+      const icon = event.target.tagName === 'I' ? event.target : event.target.querySelector('i');
+      
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+    
+    // Form submission
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simulate login process
+      const email = document.getElementById('loginEmail').value;
+      alert(`Bem-vindo de volta! Login efetuado para: ${email}`);
+      // In a real application, you would handle the login process here
+    });
+    
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      // Simulate registration process
+      const name = document.getElementById('registerName').value;
+      const userType = document.getElementById('userType').value;
+      alert(`Conta criada com sucesso! Bem-vindo(a) ${name} (${userType})`);
+      // In a real application, you would handle the registration process here
+    });
+    
+    // Forgot password
+    document.querySelector('.forgot-password').addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Funcionalidade de recuperação de palavra-passe será implementada em breve.');
+    });
+  </script>
+</body>
+</html>

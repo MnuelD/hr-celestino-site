@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog & Recursos - HR Celestino</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --secondary: #1A1A1A;
+      --accent: #FF8C42;
+      --light: #F8FAFC;
+      --dark: #2D3748;
+      --text: #4A5568;
+      --light-text: #718096;
+      --gold: #D4AF37;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background-color: #ffffff;
+      line-height: 1.7;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--secondary);
+      line-height: 1.3;
+    }
+    
+    .blog-hero {
+      background: linear-gradient(135deg, var(--secondary) 0%, #2A2A2A 100%);
+      color: white;
+      padding: 100px 0 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-hero:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+    }
+    
+    .blog-hero h1 {
+      color: white;
+      font-size: 3rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .blog-hero p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 30px;
+      opacity: 0.9;
+      position: relative;
+    }
+    
+    .blog-section {
+      padding: 80px 0;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
+    
+    .section-subtitle {
+      color: var(--light-text);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Featured Post */
+    .featured-post {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 60px;
+      transition: all 0.4s ease;
+    }
+    
+    .featured-post:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+    }
+    
+    .featured-image {
+      height: 400px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .featured-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--primary);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .featured-content {
+      padding: 40px;
+    }
+    
+    .post-meta {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      font-size: 0.9rem;
+      color: var(--light-text);
+    }
+    
+    .post-meta span {
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .post-meta i {
+      margin-right: 6px;
+      color: var(--primary);
+    }
+    
+    .featured-content h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    
+    .featured-content p {
+      color: var(--light-text);
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: #E55A00;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(255, 107, 0, 0.3);
+    }
+    
+    /* Blog Posts Grid */
+    .blog-post {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      margin-bottom: 30px;
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+    
+    .blog-post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .post-image {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    
+    .post-category {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: white;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .post-content {
+      padding: 25px;
+    }
+    
+    .post-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    
+    .post-content p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    
+    .read-more {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    
+    .read-more i {
+      margin-left: 6px;
+      transition: transform 0.3s ease;
+    }
+    
+    .read-more:hover {
+      color: #E55A00;
+    }
+    
+    .read-more:hover i {
+      transform: translateX(4px);
+    }
+    
+    /* Categories Section */
+    .categories-section {
+      background: var(--light);
+      padding: 80px 0;
+    }
+    
+    .category-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      margin-bottom: 30px;
+      border-top: 4px solid var(--primary);
+    }
+    
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .category-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      background: rgba(255, 107, 0, 0.1);
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    
+    .category-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .category-card p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    
+    .post-count {
+      display: inline-block;
+      background: rgba(255, 107, 0, 0.1);
+      color: var(--primary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    
+    /* Newsletter Section */
+    .newsletter-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--secondary) 0%, #2A2A2A 100%);
+      color: white;
+      text-align: center;
+    }
+    
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 2rem;
+      color: white;
+    }
+    
+    .newsletter-content h2 {
+      color: white;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .newsletter-content p {
+      opacity: 0.9;
+      margin-bottom: 30px;
+      font-size: 1.1rem;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 6px 0 0 6px;
+      font-size: 1rem;
+    }
+    
+    .newsletter-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 6px 6px 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .newsletter-form button:hover {
+      background: #E55A00;
+    }
+    
+    /* Resources Section */
+    .resources-section {
+      padding: 80px 0;
+    }
+    
+    .resource-card {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      height: 100%;
+      margin-bottom: 30px;
+      border-left: 4px solid var(--primary);
+    }
+    
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+    
+    .resource-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.1);
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .resource-card h3 {
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    
+    .resource-card p {
+      color: var(--light-text);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    
+    .btn-outline {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+      padding: 8px 20px;
+      font-weight: 600;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .blog-hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .blog-hero p {
+        font-size: 1.1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .featured-image {
+        height: 250px;
+      }
+      
+      .featured-content h2 {
+        font-size: 1.6rem;
+      }
+      
+      .newsletter-form {
+        flex-direction: column;
+      }
+      
+      .newsletter-form input {
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+      
+      .newsletter-form button {
+        border-radius: 6px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg sticky-top" style="background: white; box-shadow: 0 2px 15px rgba(0,0,0,0.08); padding: 12px 0;">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" style="font-weight: 700; font-size: 1.6rem; color: #1A1A1A;">HR <span style="color: #FF6B00;">Celestino</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+          <li class="nav-item"><a class="nav-link" href="candidato.html">Candidato</a></li>
+          <li class="nav-item"><a class="nav-link" href="empregador.html">Empregador</a></li>
+          <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#about">Sobre Nós</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section Blog -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>Blog & Recursos em RH</h1>
+      <p>Conteúdo especializado, tendências e insights para transformar sua gestão de pessoas e impulsionar resultados.</p>
+      <a href="#artigos" class="btn btn-primary btn-lg">Explorar Artigos</a>
+    </div>
+  </section>
+
+  <!-- Featured Post -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="featured-post">
+        <div class="row g-0">
+          <div class="col-lg-6">
+            <div class="featured-image" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80');">
+              <span class="featured-badge">Artigo em Destaque</span>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="featured-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 15 Nov, 2023</span>
+                <span><i class="far fa-clock"></i> 8 min leitura</span>
+                <span><i class="far fa-folder"></i> Gestão de Talentos</span>
+              </div>
+              <h2>O Futuro do Trabalho: 5 Tendências em RH para 2024</h2>
+              <p>Descubra as principais tendências que estão moldando o futuro dos recursos humanos e como preparar sua empresa para os novos desafios do mercado de trabalho. Inteligência artificial, flexibilidade e propósito são alguns dos temas que abordamos neste artigo completo.</p>
+              <a href="#" class="btn btn-primary">Ler Artigo Completo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="section-header" id="artigos">
+        <h2 class="section-title">Artigos Recentes</h2>
+        <p class="section-subtitle">Conteúdo atualizado sobre gestão de pessoas, recrutamento e desenvolvimento organizacional</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Recrutamento</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 10 Nov, 2023</span>
+                <span><i class="far fa-clock"></i> 6 min</span>
+              </div>
+              <h3>Como Atrair os Melhores Talentos em 2024</h3>
+              <p>Estratégias comprovadas para melhorar seu employer branding e atrair os profissionais mais qualificados para sua empresa em um mercado competitivo.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Liderança</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 5 Nov, 2023</span>
+                <span><i class="far fa-clock"></i> 10 min</span>
+              </div>
+              <h3>Liderança Adaptativa: Como Liderar em Tempos de Mudança</h3>
+              <p>Descubra os princípios da liderança adaptativa e como desenvolver essa competência essencial para navegar em ambientes complexos e em constante transformação.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Diversidade</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 1 Nov, 2023</span>
+                <span><i class="far fa-clock"></i> 7 min</span>
+              </div>
+              <h3>Diversidade e Inclusão: Além do Discurso</h3>
+              <p>Como implementar práticas efetivas de diversidade e inclusão que vão além do discurso e geram impacto real na cultura organizacional e nos resultados.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Tecnologia</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 28 Out, 2023</span>
+                <span><i class="far fa-clock"></i> 9 min</span>
+              </div>
+              <h3>People Analytics: Transformando Dados em Decisões Estratégicas</h3>
+              <p>Como utilizar dados e analytics para tomar decisões mais inteligentes em gestão de pessoas e alinhar estratégias de RH aos objetivos de negócio.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Desenvolvimento</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 25 Out, 2023</span>
+                <span><i class="far fa-clock"></i> 5 min</span>
+              </div>
+              <h3>Plano de Desenvolvimento Individual: Guia Prático</h3>
+              <p>Passo a passo para criar planos de desenvolvimento individual eficazes que engajam colaboradores e impulsionam o crescimento organizacional.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6">
+          <div class="blog-post">
+            <div class="post-image" style="background-image: url('https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?auto=format&fit=crop&w=600&q=80');">
+              <span class="post-category">Bem-estar</span>
+            </div>
+            <div class="post-content">
+              <div class="post-meta">
+                <span><i class="far fa-calendar"></i> 20 Out, 2023</span>
+                <span><i class="far fa-clock"></i> 6 min</span>
+              </div>
+              <h3>Bem-estar no Trabalho: Estratégias para Empresas</h3>
+              <p>Como implementar programas de bem-estar corporativo que realmente fazem diferença na saúde, satisfação e produtividade dos colaboradores.</p>
+              <a href="#" class="read-more">Ler Artigo <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-5 text-center">
+        <div class="col-12">
+          <a href="#" class="btn btn-primary btn-lg">Ver Todos os Artigos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Categorias do Blog</h2>
+        <p class="section-subtitle">Navegue por nossos conteúdos organizados por temas especializados</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Recrutamento & Seleção</h3>
+            <p>Estratégias, técnicas e tendências em atração, seleção e retenção de talentos.</p>
+            <span class="post-count">24 Artigos</span>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Gestão de Pessoas</h3>
+            <p>Liderança, desenvolvimento de equipas, cultura organizacional e engagement.</p>
+            <span class="post-count">18 Artigos</span>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>RH Estratégico</h3>
+            <p>People analytics, métricas de RH, planeamento estratégico e business partnering.</p>
+            <span class="post-count">15 Artigos</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Desenvolvimento & Formação</h3>
+            <p>Programas de capacitação, competências do futuro e desenvolvimento de carreira.</p>
+            <span class="post-count">22 Artigos</span>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Legislação Laboral</h3>
+            <p>Actualizações legais, relações laborais, compliance e boas práticas em RH.</p>
+            <span class="post-count">12 Artigos</span>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Tecnologia em RH</h3>
+            <p>Ferramentas digitais, transformação digital, automação e inovação em RH.</p>
+            <span class="post-count">16 Artigos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources Section -->
+  <section class="resources-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Recursos Gratuitos</h2>
+        <p class="section-subtitle">Ferramentas, modelos e guias práticos para aplicar em sua gestão de pessoas</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-file-alt"></i>
+            </div>
+            <h3>Modelo de Descrição de Cargo</h3>
+            <p>Template completo e personalizável para criar descrições de cargo eficazes e alinhadas com suas necessidades.</p>
+            <a href="#" class="btn btn-outline">Download Grátis</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-chart-bar"></i>
+            </div>
+            <h3>Guia de Métricas de RH</h3>
+            <p>E-book com as principais métricas que todo profissional de RH deve acompanhar para tomar decisões estratégicas.</p>
+            <a href="#" class="btn btn-outline">Download Grátis</a>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <h3>Checklist de Onboarding</h3>
+            <p>Lista completa de atividades para um processo de integração estruturado e eficiente para novos colaboradores.</p>
+            <a href="#" class="btn btn-outline">Download Grátis</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <div class="newsletter-icon">
+          <i class="fas fa-paper-plane"></i>
+        </div>
+        <h2>Receba Conteúdo Exclusivo</h2>
+        <p>Inscreva-se na nossa newsletter e receba artigos, dicas e recursos exclusivos sobre gestão de pessoas diretamente no seu email.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Seu melhor email" required>
+          <button type="submit">Inscrever</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" style="background: #1A1A1A; color: rgba(255,255,255,0.7); padding: 60px 0 25px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">HR Celestino</h3>
+          <p style="font-size: 0.9rem;">Soluções completas em recursos humanos para transformar pessoas em resultados.</p>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Links Rápidos</h3>
+          <ul style="list-style: none; padding: 0; font-size: 0.9rem;">
+            <li style="margin-bottom: 8px;"><a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Início</a></li>
+            <li style="margin-bottom: 8px;"><a href="servicos.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Serviços</a></li>
+            <li style="margin-bottom: 8px;"><a href="cursos.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Cursos</a></li>
+            <li style="margin-bottom: 8px;"><a href="blog.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Blog</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Contato</h3>
+          <p style="font-size: 0.9rem;"><i class="fas fa-map-marker-alt me-2"></i> Av. da Liberdade 123, Lisboa</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-phone-alt me-2"></i> +351 123 456 789</p>
+          <p style="font-size: 0.9rem;"><i class="fas fa-envelope me-2"></i> info@hrcelestino.pt</p>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <h3 style="color: white; font-size: 1.1rem; margin-bottom: 20px;">Siga-nos</h3>
+          <div class="footer-social" style="display: flex; gap: 10px;">
+            <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease;"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease;"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" style="width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: all 0.3s ease;"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom text-center mt-4 pt-3" style="border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="font-size: 0.8rem;">&copy; 2023 HR Celestino. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
