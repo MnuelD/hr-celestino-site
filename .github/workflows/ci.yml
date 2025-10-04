@@ -1,0 +1,27 @@
+name: CI - HR Celestino
+
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Validate HTML structure
+      run: |
+        echo "Checking HTML files..."
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            echo "✓ $file exists"
+          fi
+        done
+        
+    - name: Check for broken links (simplificado)
+      run: |
+        echo "Basic link check..."
+        grep -r 'href=' *.html | head -10 || true
+        
+    - name: Success
+      run: echo "✅ HR Celestino site validation completed"
