@@ -1,0 +1,427 @@
+
+
+  <!-- Hero Section Orçamento -->
+  <section class="budget-hero">
+    <div class="container">
+      <h1>Solicite Seu Orçamento</h1>
+      <p>Receba uma proposta personalizada para suas necessidades em recursos humanos. Preencha o formulário abaixo e entraremos em contacto em até 24 horas.</p>
+    </div>
+  </section>
+
+    <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Como Funciona o Processo</h2>
+        <p class="section-subtitle">Do primeiro contacto à implementação das soluções</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <h3>Solicitação</h3>
+            <p>Preencha o formulário com suas necessidades e serviços de interesse</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <h3>Análise</h3>
+            <p>Nossa equipa analisa seu caso e prepara uma proposta personalizada</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <h3>Apresentação</h3>
+            <p>Apresentamos a proposta detalhada e ajustamos conforme necessário</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-3 col-md-6">
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <h3>Implementação</h3>
+            <p>Iniciamos a execução dos serviços com acompanhamento contínuo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Type Selection -->
+  <section class="client-type-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Selecione o Seu Perfil</h2>
+        <p class="section-subtitle">Escolha abaixo se você é um candidato em busca de oportunidades ou uma empresa em busca de soluções em RH</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="client-type-card" id="candidate-card" onclick="selectClientType('candidate')">
+            <div class="client-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <h3>Candidato</h3>
+            <p>Sou um profissional em busca de novas oportunidades de carreira, desenvolvimento pessoal ou orientação profissional.</p>
+            <span class="client-badge">Serviços Pessoais</span>
+          </div>
+        </div>
+        
+        <div class="col-lg-6">
+          <div class="client-type-card" id="company-card" onclick="selectClientType('company')">
+            <div class="client-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <h3>Empresa</h3>
+            <p>Sou representante de uma empresa em busca de soluções em recrutamento, formação ou consultoria em RH.</p>
+            <span class="client-badge">Serviços Corporativos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Candidate Form -->
+  <section class="budget-section form-section" id="candidate-form">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Serviços para Candidatos</h2>
+        <p class="section-subtitle">Selecione os serviços de que necessita e receba um orçamento personalizado</p>
+      </div>
+      
+      <div class="budget-form-container">
+        <form id="candidateBudgetForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="candidateName" class="form-label">Nome Completo *</label>
+                <input type="text" class="form-control" id="candidateName" placeholder="Seu nome completo" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="candidateEmail" class="form-label">Email *</label>
+                <input type="email" class="form-control" id="candidateEmail" placeholder="seu@email.com" required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="candidatePhone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="candidatePhone" placeholder="+351 XXX XXX XXX">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="candidateProfession" class="form-label">Área Profissional</label>
+                <input type="text" class="form-control" id="candidateProfession" placeholder="Sua área de atuação">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Serviços de Interesse *</label>
+            <div class="services-grid">
+              <div class="service-option" onclick="toggleService(this, 'cv-review')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="cv-review">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-file-alt"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Revisão de Currículo</h4>
+                    <p>Análise e otimização do seu currículo para destacar suas competências</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'career-coaching')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="career-coaching">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-bullseye"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Orientação de Carreira</h4>
+                    <p>Planeamento estratégico do seu desenvolvimento profissional</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'interview-prep')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="interview-prep">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-video"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Preparação para Entrevistas</h4>
+                    <p>Simulações e treino para entrevistas de emprego</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'linkedin-optimization')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="linkedin-optimization">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fab fa-linkedin"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Otimização LinkedIn</h4>
+                    <p>Melhoria do seu perfil para atrair recrutadores</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'behavioral-assessment')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="behavioral-assessment">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-chart-bar"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Avaliação Comportamental</h4>
+                    <p>Identificação de pontos fortes e áreas de desenvolvimento</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'job-search-support')">
+                <input type="checkbox" class="service-checkbox" name="candidateServices" value="job-search-support">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-search"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Apoio na Busca de Emprego</h4>
+                    <p>Estratégias personalizadas para encontrar oportunidades</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="candidateMessage" class="form-label">Informações Adicionais</label>
+            <textarea class="form-control" id="candidateMessage" placeholder="Descreva suas necessidades específicas, objetivos profissionais ou qualquer informação relevante..."></textarea>
+          </div>
+          
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="candidateNewsletter" checked>
+            <label class="form-check-label" for="candidateNewsletter">Desejo receber informações sobre oportunidades de emprego e conteúdos sobre desenvolvimento de carreira</label>
+          </div>
+          
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Solicitar Orçamento</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Company Form -->
+  <section class="budget-section form-section" id="company-form">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Soluções para Empresas</h2>
+        <p class="section-subtitle">Selecione os serviços de que sua empresa necessita e receba uma proposta comercial</p>
+      </div>
+      
+      <div class="budget-form-container">
+        <form id="companyBudgetForm">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="companyName" class="form-label">Nome da Empresa *</label>
+                <input type="text" class="form-control" id="companyName" placeholder="Razão social da empresa" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="companySector" class="form-label">Setor de Atividade</label>
+                <input type="text" class="form-control" id="companySector" placeholder="Setor de atuação da empresa">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="contactName" class="form-label">Nome do Contacto *</label>
+                <input type="text" class="form-control" id="contactName" placeholder="Seu nome completo" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="contactPosition" class="form-label">Cargo</label>
+                <input type="text" class="form-control" id="contactPosition" placeholder="Seu cargo na empresa">
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="companyEmail" class="form-label">Email *</label>
+                <input type="email" class="form-control" id="companyEmail" placeholder="seu@empresa.com" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="companyPhone" class="form-label">Telefone</label>
+                <input type="tel" class="form-control" id="companyPhone" placeholder="+351 XXX XXX XXX">
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label">Serviços de Interesse *</label>
+            <div class="services-grid">
+              <div class="service-option" onclick="toggleService(this, 'recruitment')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="recruitment">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-user-tie"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Recrutamento & Seleção</h4>
+                    <p>Processo completo de atração e seleção de talentos</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'training')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="training">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Formação & Desenvolvimento</h4>
+                    <p>Programas de capacitação para suas equipas</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'consulting')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="consulting">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Consultoria em RH</h4>
+                    <p>Estratégias personalizadas para gestão de pessoas</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'performance')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="performance">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Gestão de Performance</h4>
+                    <p>Sistemas de avaliação e desenvolvimento</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'hr-software')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="hr-software">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Software de RH</h4>
+                    <p>Ferramentas para automatizar processos de RH</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="service-option" onclick="toggleService(this, 'outplacement')">
+                <input type="checkbox" class="service-checkbox" name="companyServices" value="outplacement">
+                <div class="service-content">
+                  <div class="service-icon">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <div class="service-text">
+                    <h4>Outplacement</h4>
+                    <p>Suporte na transição de colaboradores</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="companyNeeds" class="form-label">Descreva suas Necessidades</label>
+            <textarea class="form-control" id="companyNeeds" placeholder="Descreva o contexto, desafios específicos, número de colaboradores envolvidos, prazos e qualquer informação relevante..."></textarea>
+          </div>
+          
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="companyNewsletter" checked>
+            <label class="form-check-label" for="companyNewsletter">Desejo receber informações sobre tendências em RH, cases de sucesso e novidades da HR Celestino</label>
+          </div>
+          
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-lg">Solicitar Proposta Comercial</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Porque Escolher a HR Celestino</h2>
+        <p class="section-subtitle">Vantagens exclusivas que oferecemos aos nossos clientes</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-4">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <h3>Especialistas Certificados</h3>
+            <p>Nossa equipa é composta por profissionais certificados com vasta experiência em recursos humanos.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Soluções Personalizadas</h3>
+            <p>Desenvolvemos estratégias sob medida para atender às necessidades específicas de cada cliente.</p>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="benefit-card">
+            <div class="benefit-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Resultados Mensuráveis</h3>
+            <p>Acompanhamos métricas e KPIs para garantir que nossas soluções gerem valor tangível.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
